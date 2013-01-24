@@ -12,14 +12,13 @@
 
 	<p>
 		Current Render Action:
-<<<<<<< HEAD
 		<strong ng-bind="renderAction">Unknown</strong>
 	</p>
 
 	<p>
 		<a href="#/home" ng-class="{ on: isHome }">Home</a> -
 		<a href="#/friends" ng-class="{ on: isFriends }">Friends</a> -
-		<a href="#/contact/sifeij" ng-class="{ on: isContact }">Contact</a>
+		<a href="#/contact/sjiang" ng-class="{ on: isContact }">Contact</a>
 	</p>
 
 	<div ng-switch on="renderPath[ 0 ]">
@@ -27,69 +26,16 @@
 		<div ng-switch-when="home">
 			<p>This is the homepage content.</p>
 			<p>Sub-path: <em>{{ renderPath[ 1 ] }}</em>.</p>
-=======
-
-		<!--
-			We're going to bind the content of the Strong element to
-			the scope-level model, renderAction. Then, when this gets
-			set in the Controller, it will be updated here.
-		-->
-		<strong ng-bind="renderAction">Unknown</strong>
-	</p>
-
-	<!--
-		For the navigation, we'll be conditionally adding the "on"
-		class based on the state of the current scope.
-	-->
-	<p>
-		<a href="#/home" ng-class="{ on: isHome }">Home</a> -
-		<a href="#/friends" ng-class="{ on: isFriends }">Friends</a> -
-		<a href="#/contact/ben" ng-class="{ on: isContact }">Contact</a>
-	</p>
-
-	<!--
-		When the route changes, we're going to be setting up the
-		renderPath - an array of values that help define how the
-		page is going to be rendered. We can use these values to
-		conditionally show / load parts of the page.
-	-->
-	<div ng-switch on="renderPath[ 0 ]">
-
-		<!-- Home Content. -->
-		<div ng-switch-when="home">
-
-			<p>
-				This is the homepage content.
-			</p>
-
-			<p>
-				Sub-path: <em>{{ renderPath[ 1 ] }}</em>.
-			</p>
-
->>>>>>> c808642a1df421d08c75c455a401d911a04b941b
 		</div>
 
 		<!-- Friends Content. -->
 		<div ng-switch-when="friends">
-<<<<<<< HEAD
 			<p>Here are my friends!</p>
 			<p>Sub-path: <em>{{ renderPath[ 1 ] }}</em>.</p>
-=======
-
-			<p>
-				Here are my friends!
-			</p>
-
-			<p>
-				Sub-path: <em>{{ renderPath[ 1 ] }}</em>.
-			</p>
-
->>>>>>> c808642a1df421d08c75c455a401d911a04b941b
 		</div>
 
 		<!-- Contact Content. -->
 		<div ng-switch-when="contact">
-<<<<<<< HEAD
 			<p>Feel free to contact me.</p>
 			<p>Sub-path: <em>{{ renderPath[ 1 ] }}</em>.</p>
 			<p>Username: <em>{{ username }}</em></p>
@@ -99,86 +45,6 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="controllers/app-controller.js"></script>
-=======
 
-			<p>
-				Feel free to contact me.
-			</p>
-
-			<p>
-				Sub-path: <em>{{ renderPath[ 1 ] }}</em>.
-			</p>
-
-			<p>
-				Username: <em>{{ username }}</em>
-			</p>
-
-		</div>
-
-	</div>
-
-
-	<!-- Load AngularJS from the CDN. -->
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-	<script type="text/javascript">
-		
-		var App = angular.module( "App", [] );
-
-		App.config(
-			function( $routeProvider ) {
-				$routeProvider
-					.when("/home", { action: "home.default" })
-					.when("/friends", { action: "friends.list"})
-					.when("/contact/:username", { action: "contact.form" })
-					.otherwise({ redirectTo: "/dashboard" });
-			}
-		);
-
-
-		// Define our root-level controller for the application.
-		App.controller(
-			"AppController",
-			function( $scope, $route, $routeParams ){
-
-				// Update the rendering of the page.
-				render = function(){
-
-					// Pull the "action" value out of the
-					// currently selected route.
-					var renderAction = $route.current.action;
-
-					// Also, let's update the render path so that
-					// we can start conditionally rendering parts
-					// of the page.
-					var renderPath = renderAction.split( "." );
-
-					var username = ($routeParams.username || "");
-
-					// Reset the booleans used to set the class for the navigation.
-					var isHome = (renderPath[ 0 ] == "home");
-					var isFriends = (renderPath[ 0 ] == "friends");
-					var isContact = (renderPath[ 0 ] == "contact");
-
-					// Store the values in the model.
-					$scope.renderAction = renderAction;
-					$scope.renderPath = renderPath;
-					$scope.username = username;
-					$scope.isHome = isHome;
-					$scope.isFriends = isFriends;
-					$scope.isContact = isContact;
-				};
-
-				$scope.$on(
-					"$routeChangeSuccess",
-					function( $currentRoute, $previousRoute ){
-						render();
-					}
-				);
-			}
-		);
-	</script>
-
-	<script src="js/main.js"></script>
->>>>>>> c808642a1df421d08c75c455a401d911a04b941b
 </body>
 </html>
